@@ -1,16 +1,15 @@
-import type { Expense } from "../types/Expense";
+import type { ExpenseInput } from "../types/Expense";
 
 interface ExpenseAddProps {
-  expenseAdd: (expense: Expense) => void;
+  expenseAdd: (expense: ExpenseInput) => void;
 }
 
-function generateRandomExpense(): Expense {
+function generateRandomExpense(): ExpenseInput {
   return {
-    id: Math.round(Math.random()*100).toString(),
-    date: "2026-09-18",
+    date: new Date().toISOString(),
     description: "New random Expense",
-    payer: "New random Payer",
-    amount: Math.random() * 100
+    payer: Math.random() < 0.5 ? "Alice" : "Bob",
+    amount: Math.round(Math.random() * 10000) / 100,
   };
 }
 
